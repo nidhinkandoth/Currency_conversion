@@ -22,8 +22,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    #url(r'', auth_views.login,{'template_name': 'registration/login.html'}, name='login'),
     url(r'^register/$', views.register, name='register'),
-    url(r'^login/$', auth_views.login,{'template_name': 'registration/login.html'}, name='login'),
+    url(r'^$', auth_views.login,{'template_name': 'registration/login.html'}, name='login'),
     url(r'^logout/$', auth_views.logout,{'template_name': 'registration/logout.html'}, name='logout'),
     url(r'^admin/', admin.site.urls),
     url(r'^conversion/', include('conversion.urls')),

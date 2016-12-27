@@ -3,8 +3,12 @@ import requests
 from django.http import HttpResponse
 # Create your views here.
 from django.views.decorators.csrf import csrf_exempt
+from conversion.models import save_data
+
+
 def conversion_page(request):
     return render(request, 'conversion_page.html')
+
 @csrf_exempt
 def conversion_api(request):
     #print request.POST
@@ -16,8 +20,8 @@ def conversion_api(request):
         return HttpResponse('Invalid Amount')
     convert_from = request.POST.get('convert_from')
     convert_to = request.POST.get('convert_to')
-    #data_string = '%s to %s' %(convert_from,convert_to)
-    #data_string.save()
+    data = save_data(convert_from=convert_from,convert_to=convert_to,amount=amount_entered)
+    data.save()
     if(convert_from == convert_to):
         return HttpResponse(amount)
     else:

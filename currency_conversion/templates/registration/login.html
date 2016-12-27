@@ -2,15 +2,18 @@
 <head>
    <title>Login</title>
 </head>
-<body style="background-color:rgb(103, 211, 232)";>
+{% load static %}
+   <link rel="stylesheet" type="text/css" href={% static 'conversion/conversion_page.css' %}/>
+<h1 class='h1'>Currency Converter</h1>
+<body class='body' >
 {% block content %}
   <h2>Login</h2>
-  {% include "base.html" %}
-  <form method="post">
+  <form method="post" class='login_form'>
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Login</button>
   </form>
 {% endblock %}
+ <div> <a href="{% url 'register' %}">New user? SignUp here..</a></div>
 </body>
 </html>
