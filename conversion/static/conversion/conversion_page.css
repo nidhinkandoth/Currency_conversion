@@ -1,0 +1,9 @@
+.box{
+   border-left: 5px solid blue;
+   border-height:20px;
+   background-color: lightgrey;
+   height: 50px;
+    width: 100px;
+    background-color: powderblue;
+    margin-left:100px;
+}

@@ -2,12 +2,15 @@
 <head>
 <h1>Convert Currency</h1>
 </head>
-<body>
+{% load static %}
+<link rel="stylesheet" type="text/css" href={% static 'conversion/conversion_page.css' %}/>
+<body >
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <form method="POST">
  {% csrf_token %}
-  Amount:<br>
+  Amount:
   <input type="text" id="amount" name="amount"/><br>
+  <br>
   Convert From:
 <select id= "convert_from">
     <option value="USD">US Dollar</option>
@@ -24,9 +27,10 @@
   <option value="SGD">SGD</option>
   <option value="GBP">GBP</option>
 </select>
-<br>
-  <input type="button" id="submit" value="Submit"/>
- <div id='result'>result_position </div>
+<br><br>
+  <input type="button" id="submit" value="Convert"/><br><br>
+  Converted Amount:
+ <div id='result' class= "box"> </div><br>
 </form>
 <script>
 $("#submit").click(function(){
