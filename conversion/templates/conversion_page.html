@@ -1,0 +1,51 @@
+<html>
+<head>
+<h1>Convert Currency</h1>
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<form method="POST">
+ {% csrf_token %}
+  Amount:<br>
+  <input type="text" id="amount" name="amount"/><br>
+  Convert From:
+<select id= "convert_from">
+    <option value="USD">US Dollar</option>
+    <option value="EUR">Euro</option>
+    <option value="INR">Indian Rupee</option>
+    <option value="SGD">SGD</option>
+    <option value="GBP">GBP</option>
+ </select>
+  Convert To:
+<select id= "convert_to">
+  <option value="USD">US Dollar</option>
+  <option value="EUR">Euro</option>
+  <option value="INR">Indian Rupee</option>
+  <option value="SGD">SGD</option>
+  <option value="GBP">GBP</option>
+</select>
+<br>
+  <input type="button" id="submit" value="Submit"/>
+ <div id='result'>result_position </div>
+</form>
+<script>
+$("#submit").click(function(){
+    console.log('test')
+    $.ajax({url: "/conversion/submission/",
+           type:"POST",
+           data:{convert_from : $('#convert_from').val(),
+		 convert_to:$('#convert_to').val(),
+	         amount:$('#amount').val(),
+		},
+        success: function (html) {
+          console.log('success test')
+
+          $('#result').html(html);
+        }
+});
+});
+
+
+</script>
+</body>
+</html>
