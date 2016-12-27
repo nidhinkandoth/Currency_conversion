@@ -1,18 +1,19 @@
 <html>
-<head>
+<head class="header">
 <h1>Convert Currency</h1>
 </head>
 {% load static %}
 <link rel="stylesheet" type="text/css" href={% static 'conversion/conversion_page.css' %}/>
-<body >
+<body class='body'>
+{% include "base.html" %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <form method="POST">
  {% csrf_token %}
   Amount:
-  <input type="text" id="amount" name="amount"/><br>
+  <input type="text" class= 'textarea_2' id="amount" name="amount"/><br>
   <br>
   Convert From:
-<select id= "convert_from">
+<select id= "convert_from" class='select'>
     <option value="USD">US Dollar</option>
     <option value="EUR">Euro</option>
     <option value="INR">Indian Rupee</option>
@@ -20,7 +21,7 @@
     <option value="GBP">GBP</option>
  </select>
   Convert To:
-<select id= "convert_to">
+<select id= "convert_to" class='select'>
   <option value="USD">US Dollar</option>
   <option value="EUR">Euro</option>
   <option value="INR">Indian Rupee</option>
@@ -28,9 +29,9 @@
   <option value="GBP">GBP</option>
 </select>
 <br><br>
-  <input type="button" id="submit" value="Convert"/><br><br>
+  <input type="button" class="convert" id="submit" value="Convert"/><br><br>
   Converted Amount:
- <div id='result' class= "box"> </div><br>
+ <div style="text-align:center;text-color:'darkblue;" id='result' class= "boxs"> </div><br>
 </form>
 <script>
 $("#submit").click(function(){

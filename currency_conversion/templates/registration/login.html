@@ -5,6 +5,7 @@
 <body style="background-color:rgb(103, 211, 232)";>
 {% block content %}
   <h2>Login</h2>
+  {% include "base.html" %}
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}

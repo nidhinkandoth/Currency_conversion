@@ -8,9 +8,16 @@ def conversion_page(request):
 @csrf_exempt
 def conversion_api(request):
     #print request.POST
-    amount = float(request.POST.get('amount'))
+    amount_entered = request.POST.get('amount')
+    amount_type = type(amount_entered)
+    try:
+        amount = float(amount_entered)
+    except:
+        return HttpResponse('Invalid Amount')
     convert_from = request.POST.get('convert_from')
     convert_to = request.POST.get('convert_to')
+    #data_string = '%s to %s' %(convert_from,convert_to)
+    #data_string.save()
     if(convert_from == convert_to):
         return HttpResponse(amount)
     else:
